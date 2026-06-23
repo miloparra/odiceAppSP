@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+html {
+    font-family: 'Kantumruy Pro';
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    background-color: #F9FAFB !important;
+    color: black !important;
+}
+
+a {
+    cursor: pointer;
+}
+
+.welcomeTitle {
+    font-family: 'DM Serif Text';
+}
+
+.guillemets {
+    font-family: 'Lancelot';
+}
