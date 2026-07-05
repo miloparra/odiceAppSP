@@ -78,9 +78,11 @@ const lernMoreLabel = computed(() =>
 
 <template>
   <div class="bg-white">
+
+    <!-- HOME SECTION -->
     <section id="home" class="scroll-mt-[65px]">
-      <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-80 object-cover"
-      src="public/volcanIA2.png" alt="">
+      <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-70 object-cover"
+      src="public/flags.jpg" alt="">
       <div class="reactive w-full h-screen top-[-65px]">
         <div class="h-screen absolute flex flex-col justify-between top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div class="h-20"></div>
@@ -143,12 +145,65 @@ const lernMoreLabel = computed(() =>
       </div>
     </section>
 
+    <!-- ABOUT SECTION -->
     <section id="about" class="scroll-mt-[65px]">
       <div class="flex justify-center mt-[-65px]">
+
+        <!-- PC AND TABLET DISPLAY -->
+        <div class="hidden md:block w-4/5 mt-20 mb-25">
+
+          <div class="chat chat-start">
+            <div class="chat-image avatar">
+              <div class="w-20 rounded-full">
+                <img
+                  alt="Tailwind CSS chat bubble component"
+                  src="../public/michel.jpeg"
+                />
+              </div>
+            </div>
+            <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationA }}</div>
+          </div>
+
+          <div class="chat chat-end mt-3">
+            <div class="chat-bubble lg:text-lg px-10 py-5 bg-[#f5f5f5] rounded-3xl">Qu'est ce que vous proposez pour les entreprises ?</div>
+          </div>
+
+          <div class="chat chat-start">
+            <div class="chat-image avatar">
+              <div class="w-20 rounded-full">
+                <img
+                  alt="Tailwind CSS chat bubble component"
+                  src="../public/michel.jpeg"
+                />
+              </div>
+            </div>
+            <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationB }}</div>
+          </div>
+        
+          <div class="chat chat-end mt-3">
+            <div class="chat-bubble lg:text-lg px-10 py-5 bg-[#f5f5f5] rounded-3xl">Et pour les avocats ?</div>
+          </div>
+
+          <div class="chat chat-start">
+            <div class="chat-image avatar">
+              <div class="w-20 rounded-full">
+                <img
+                  alt="Tailwind CSS chat bubble component"
+                  src="../public/michel.jpeg"
+                />
+              </div>
+            </div>
+            <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationC }}</div>
+          </div>
+        
+        </div>
+        
+        <!-- SMARTPHONE DISPLA -->
         <div class="
+            md:hidden
             relative
             w-5/6
-            mt-20 mb-20
+            my-20
             bg-[#F4F3FF]
             p-7 lg:p-15
             lg:text-lg
