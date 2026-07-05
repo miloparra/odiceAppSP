@@ -120,34 +120,35 @@ const toggle = (id) => {
          class="px-20"
     >
       <div class="collapse bg-white rounded-[40px] pl-4 mb-4 shadow-xl hover:scale-102 transition-transform duration-400">
-        <input type="checkbox" @change="toggle(service.sys.id)" />
-        <div class="collapse-title flex">
-            <div class="flex items-center mr-10">
-                    <font-awesome-icon
-                        :icon="service.fields.icon"
-                        class="text-xl"
-                    />
-                </div>
-            <div class="flex justify-between items-center w-full">
-                <div>
-                    <div class="serviceTitle text-sm lg:text-base font-medium">{{ service.fields.title }}</div>
-                    <div class="text-sm lg:text-base">{{ service.fields.shortDescription }}</div>
-                </div>
-                <div class="flex items-center">
-                    <font-awesome-icon
-                        icon="fa-solid fa-angle-down"
-                        class="text-base transition-transform duration-500"
-                        :class="{ 'rotate-180': openId === service.sys.id }"
-                    />
-                </div>
+        <div class="collapse" :class="{ 'collapse-open': openId === service.sys.id }">
+          <div class="collapse-title flex" @click="toggle(service.sys.id)">
+              <div class="flex items-center mr-10">
+                      <font-awesome-icon
+                          :icon="service.fields.icon"
+                          class="text-xl"
+                      />
+                  </div>
+              <div class="flex justify-between items-center w-full">
+                  <div>
+                      <div class="serviceTitle text-sm lg:text-base font-medium">{{ service.fields.title }}</div>
+                      <div class="text-sm lg:text-base">{{ service.fields.shortDescription }}</div>
+                  </div>
+                  <div class="flex items-center">
+                      <font-awesome-icon
+                          icon="fa-solid fa-angle-down"
+                          class="text-base transition-transform duration-500"
+                          :class="{ 'rotate-180': openId === service.sys.id }"
+                      />
+                  </div>
+              </div>
+          </div>
+          <div class="collapse-content flex justify-center items-center">
+            <div class="flex items-center md:w-4/5 my-3 md:my-6 md:mr-24">
+              <img class="hidden md:block h-38 object-cover mr-10 rounded-full"
+              :src="`https:${service.fields.pictogram.fields.file.url}`"
+              :alt="service.fields.pictogram.fields.title || 'Service image'" />
+              <div class="text-sm lg:text-base whitespace-pre-line">{{ service.fields.longDescription }}</div>
             </div>
-        </div>
-        <div class="collapse-content flex justify-center items-center">
-          <div class="flex items-center md:w-4/5 my-3 md:my-6 md:mr-24">
-            <img class="hidden md:block h-38 object-cover mr-10 rounded-full"
-            :src="`https:${service.fields.pictogram.fields.file.url}`"
-            :alt="service.fields.pictogram.fields.title || 'Service image'" />
-            <div class="text-sm lg:text-base whitespace-pre-line">{{ service.fields.longDescription }}</div>
           </div>
         </div>
       </div>
