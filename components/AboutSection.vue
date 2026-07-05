@@ -154,7 +154,7 @@ const lernMoreLabel = computed(() =>
 
           <div class="chat chat-start">
             <div class="chat-image avatar">
-              <div class="w-20 rounded-full">
+              <div class="w-15 rounded-full">
                 <img
                   alt="Tailwind CSS chat bubble component"
                   src="../public/michel.jpeg"
@@ -164,13 +164,13 @@ const lernMoreLabel = computed(() =>
             <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationA }}</div>
           </div>
 
-          <div class="chat chat-end mt-3">
+          <div class="chat chat-end my-3">
             <div class="chat-bubble lg:text-lg px-10 py-5 bg-[#f5f5f5] rounded-3xl">Qu'est ce que vous proposez pour les entreprises ?</div>
           </div>
 
           <div class="chat chat-start">
             <div class="chat-image avatar">
-              <div class="w-20 rounded-full">
+              <div class="w-15 rounded-full">
                 <img
                   alt="Tailwind CSS chat bubble component"
                   src="../public/michel.jpeg"
@@ -180,13 +180,13 @@ const lernMoreLabel = computed(() =>
             <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationB }}</div>
           </div>
         
-          <div class="chat chat-end mt-3">
+          <div class="chat chat-end my-3">
             <div class="chat-bubble lg:text-lg px-10 py-5 bg-[#f5f5f5] rounded-3xl">Et pour les avocats ?</div>
           </div>
 
           <div class="chat chat-start">
             <div class="chat-image avatar">
-              <div class="w-20 rounded-full">
+              <div class="w-15 rounded-full">
                 <img
                   alt="Tailwind CSS chat bubble component"
                   src="../public/michel.jpeg"
@@ -195,6 +195,28 @@ const lernMoreLabel = computed(() =>
             </div>
             <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationC }}</div>
           </div>
+
+          <NuxtLink to="#services" class="flex justify-center mt-15">
+            <button class="
+                rounded-full
+                px-10
+                py-3
+                text-sm
+                lg:text-lg
+                font-semibold
+                text-[#8FDA59]
+                border-2
+                border-[#8FDA59]
+                lg:hover:font-medium
+                hover:text-black
+                hover:bg-[#8FDA59]
+                cursor-pointer
+                hover:scale-103
+                hover:shadow-2xl
+                transition-transform-colors duration-300 ease-in-out">
+                {{ lernMoreLabel }}
+            </button>
+          </NuxtLink>
         
         </div>
         
