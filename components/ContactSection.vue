@@ -44,8 +44,8 @@ const placeholders = computed(() => ({
   companyName: lang.value === 'fr' ? "Nom de l'entreprise" : 'Company name',
   lastName: lang.value === 'fr' ? 'Nom' : 'Last name',
   firstName: lang.value === 'fr' ? 'Prénom' : 'First name',
-  phoneNumber: lang.value === 'fr' ? 'Numéro de téléphone' : 'Phone number',
-  email: lang.value === 'fr' ? 'Adresse mail' : 'Email address',
+  phoneNumber: lang.value === 'fr' ? 'Téléphone' : 'Telephone',
+  email: lang.value === 'fr' ? 'Email' : 'Email',
   requestMotif: lang.value === 'fr' ? 'Motif de la demande' : 'Request motive',
   moreInfo: lang.value === 'fr' ? 'Informations complémentaires' : 'Additional information',
 }))
