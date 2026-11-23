@@ -41,7 +41,7 @@ onUnmounted(() => {
 })
 
 const isTranparentTheme = computed(() =>
-  !scrolled.value
+  !scrolled.value && route.path === '/'
 )
 
 const navbarClasses = computed(() =>
@@ -103,7 +103,7 @@ watch(sidebarOpen, (isOpen) => {
           </svg>
         </button>
       </div>
-      <NuxtLink to="#home" class="ml-2">
+      <NuxtLink to="/#home" class="ml-2">
         <img
           class="w-20 lg:w-27 ml-2 transition-opacity duration-200"
           :src="currentLogo"
@@ -116,11 +116,11 @@ watch(sidebarOpen, (isOpen) => {
 
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1 space-x-10" :class="textColorClass">
-        <li><NuxtLink to="#about" class="uppercase">{{ aboutTab }}</NuxtLink></li>
-        <li><NuxtLink to="#services" class="uppercase">Services</NuxtLink></li>
-        <li><NuxtLink to="#blog" class="uppercase">Blog</NuxtLink></li>
-        <li><NuxtLink to="#ressources" class="uppercase">{{ resourcesTab }}</NuxtLink></li>
-        <li><NuxtLink to="#contact" class="uppercase">Contact</NuxtLink></li>
+        <li><NuxtLink to="/#about" class="uppercase">{{ aboutTab }}</NuxtLink></li>
+        <li><NuxtLink to="/#services" class="uppercase">Services</NuxtLink></li>
+        <li><NuxtLink to="/#blog" class="uppercase">Blog</NuxtLink></li>
+        <li><NuxtLink to="/#ressources" class="uppercase">{{ resourcesTab }}</NuxtLink></li>
+        <li><NuxtLink to="/#contact" class="uppercase">Contact</NuxtLink></li>
       </ul>
     </div>
 
