@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@contentful/rich-text-html-renderer':
+        specifier: ^17.2.3
+        version: 17.2.3
       '@fortawesome/fontawesome-svg-core':
         specifier: ^6.7.2
         version: 6.7.2
@@ -227,6 +230,10 @@ packages:
 
   '@contentful/content-source-maps@0.12.3':
     resolution: {integrity: sha512-HzimXvs48eg+tjWtDuOIZzjbSYxfC8CLMZaTwzPqF6wW0TM5KoQIfDJZrGlnpGrZ66lXvyEc5nuYCa58ow8C7g==}
+
+  '@contentful/rich-text-html-renderer@17.2.3':
+    resolution: {integrity: sha512-n1KnEVm1P4ZGFII6X9DLCgiNkysuuOK9cT1PzG0UYka+kFEaKj5KNdF+VuF3g04wSas1y3Su7SbAUC0ICqOhFw==}
+    engines: {node: '>=20.0.0'}
 
   '@contentful/rich-text-types@17.2.7':
     resolution: {integrity: sha512-aIdozk8vk5gsYcallOrwEiL6+GSlMXZorDOmiVELfpbVaXMJPJPlf2CBw3LUzviAqCw0UPQcKHHCwG7SdY7u5w==}
@@ -4929,6 +4936,10 @@ snapshots:
     dependencies:
       '@vercel/stega': 1.1.0
       json-pointer: 0.6.2
+
+  '@contentful/rich-text-html-renderer@17.2.3':
+    dependencies:
+      '@contentful/rich-text-types': 17.2.7
 
   '@contentful/rich-text-types@17.2.7': {}
 
