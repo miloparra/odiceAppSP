@@ -54,7 +54,7 @@ watch(lang, (newLang) => {
 
 <template>
   <section id="blog" class="scroll-mt-16 px-5 xl:px-60 py-15 lg:py-20">
-    <div class="px-10 lg:px-5 pb-10 lg:pb-20 space-y-2">
+    <div class="px-10 lg:px-5 pb-10 lg:pb-15 space-y-2">
         <p class="ml-1 mb-2 text-sm font-medium uppercase tracking-widest text-gray-500">
             {{ blogIntroduction?.tag }}
         </p>
@@ -65,7 +65,7 @@ watch(lang, (newLang) => {
             {{ blogIntroduction?.introduction }}
         </div>
     </div>
-    <div v-if="artcles.length === 0">
+    <div v-if="articles.length === 0" class="px-10 pb-10 lg:text-xl">
       {{ message }}
     </div>
     <div v-if="error" class="text-red-500">
