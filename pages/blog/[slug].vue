@@ -31,15 +31,46 @@ if (!article.value) {
   })
 }
 
+
 useHead({
   title: `${article.value.fields.title} | ODicé`,
-  meta: [
+
+  link: [
     {
-      name: 'description',
-      content: article.value.fields.excerpt
+      rel: 'canonical',
+      href: `https://www.odice-immigration.com/blog/${article.value.fields.slug}`
+    }
+  ],
+
+  meta: [
+    // Description SEO
+    { name: 'description', content: article.value.fields.excerpt || '' },
+
+    // Open Graph
+    { property: 'og:type', content: 'article' },
+    { property: 'og:title', content: `${article.value.fields.title} | ODicé` },
+    { property: 'og:description', content: article.value.fields.excerpt || '' },
+    { property: 'og:url', content: `https://www.odice-immigration.com/blog/${article.value.fields.slug}` },
+    {
+      property: 'og:image',
+      content: article.value.fields.coverImage
+        ? `https:${article.value.fields.coverImage.fields.file.url}`
+        : 'https://www.odice-immigration.com/flags.jpg'
+    },
+
+    // Twitter Cards
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: `${article.value.fields.title} | ODicé` },
+    { name: 'twitter:description', content: article.value.fields.excerpt || '' },
+    {
+      name: 'twitter:image',
+      content: article.value.fields.coverImage
+        ? `https:${article.value.fields.coverImage.fields.file.url}`
+        : 'https://www.odice-immigration.com/flags.jpg'
     }
   ]
 })
+
 </script>
 
 <template>
@@ -120,7 +151,7 @@ useHead({
       >
         <!-- Contenu Contentful -->
         <div
-          class="article-content"
+          class="article-content whitespace-pre-line"
           v-html="articleHtml"
         ></div>
       </article>
