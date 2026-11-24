@@ -53,7 +53,7 @@ watch(lang, (newLang) => {
 </script>
 
 <template>
-  <section id="blog" class="scroll-mt-16 px-5 xl:px-60 py-15 lg:py-20">
+  <section id="blog" class="scroll-mt-16 px-5 xl:px-60 py-9 lg:py-14">
     <div class="px-10 lg:px-5 pb-10 lg:pb-15 space-y-2">
         <p class="ml-1 mb-2 text-sm font-medium uppercase tracking-widest text-gray-500">
             {{ blogIntroduction?.tag }}
@@ -93,3 +93,14 @@ watch(lang, (newLang) => {
     </div>
   </section>
 </template>
+
+<style>
+/* Masquer la scrollbar du carousel */
+.overflow-x-auto {
+  scrollbar-width: none;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+</style>
