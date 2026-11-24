@@ -106,8 +106,11 @@ const toggle = (id) => {
 </script>
 
 <template>
-  <section id="services" class="bg-[#5452e5] scroll-mt-16 px-5 xl:px-60 py-10">
-    <div class="px-5 py-15 space-y-2">
+  <section id="services" class="bg-[#5452e5] scroll-mt-16 px-5 xl:px-60 py-15 lg:py-20">
+    <div class="px-10 lg:px-5 pb-10 lg:pb-20 space-y-2">
+      <p class="ml-1 mb-2 text-sm font-medium uppercase tracking-widest text-[#dddddd]">
+          {{ servicesIntroduction?.tag }}
+      </p>
       <div class="font-semibold text-4xl lg:text-5xl text-white">
         {{ servicesIntroduction?.title }}
       </div>
@@ -117,12 +120,12 @@ const toggle = (id) => {
     </div>
     <div v-for="service in services"
          :key="service.sys.id"
-         class="px-20"
+         class="md:px-10 lg:px-20"
     >
-      <div class="collapse bg-white rounded-[40px] pl-4 mb-4 shadow-xl hover:scale-102 transition-transform duration-400">
-        <div class="collapse" :class="{ 'collapse-open': openId === service.sys.id }">
+      <div class="collapse bg-white rounded-[40px] mb-4 shadow-xl hover:scale-102 transition-transform duration-400">
+        <div class="collapse ml-4 lg:pl-2 lg:ml-2" :class="{ 'collapse-open': openId === service.sys.id }">
           <div class="collapse-title flex hover:text-[#5452e5]" @click="toggle(service.sys.id)">
-            <div class="flex items-center mr-10">
+            <div class="hidden md:flex items-center mr-10">
               <font-awesome-icon
                   :icon="service.fields.icon"
                   class="text-xl"
@@ -130,10 +133,10 @@ const toggle = (id) => {
             </div>
             <div class="flex justify-between items-center w-full">
               <div>
-                <div class="serviceTitle text-sm lg:text-base font-medium">{{ service.fields.title }}</div>
-                <div class="text-sm lg:text-base">{{ service.fields.shortDescription }}</div>
+                <div class="serviceTitle text-sm md:text-base md:font-semibold">{{ service.fields.title }}</div>
+                <div class="hidden md:block text-sm lg:text-base">{{ service.fields.shortDescription }}</div>
               </div>
-              <div class="flex items-center">
+              <div class="flex items-center pl-4">
                 <font-awesome-icon
                     icon="fa-solid fa-angle-down"
                     class="text-base transition-transform duration-500"
@@ -153,7 +156,7 @@ const toggle = (id) => {
         </div>
       </div>
     </div>
-    <div class="px-5 py-5 lg:py-10 space-y-5">
+    <div class="px-5 pt-5 lg:pt-10 space-y-5">
       <div class="text-white flex justify-center lg:text-xl text-center">
         {{ contactQuestion }}
       </div>
