@@ -35,6 +35,10 @@ const loadArticles = async (locale) => {
   }
 }
 
+const message = computed(() =>
+  lang.value === 'fr' ? 'Des articles arriveront prochainement !' : 'Artcles will arrive soon !'
+)
+
 // Initial load
 onMounted(() => {
   fetchBlogIntroduction(lang.value)
@@ -60,6 +64,9 @@ watch(lang, (newLang) => {
         <div class="xl:w-150 font-medium lg:text-2xl whitespace-pre-line text-gray-500">
             {{ blogIntroduction?.introduction }}
         </div>
+    </div>
+    <div v-if="artcles.length === 0">
+      {{ message }}
     </div>
     <div v-if="error" class="text-red-500">
       Impossible de charger les articles.
