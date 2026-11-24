@@ -53,7 +53,9 @@ useHead({
     { property: 'og:url', content: `https://www.odice-immigration.com/blog/${article.value.fields.slug}` },
     {
       property: 'og:image',
-      content: 'https://www.odice-immigration.com/flags.jpg'
+      content:  article.value.fields.coverImage
+        ? `https:${article.value.fields.coverImage.fields.file.url}`
+        : 'https://www.odice-immigration.com/flags.jpg'
     },
 
     // Twitter Cards
@@ -62,7 +64,9 @@ useHead({
     { name: 'twitter:description', content: article.value.fields.excerpt || '' },
     {
       name: 'twitter:image',
-      content: 'https://www.odice-immigration.com/flags.jpg'
+      content:  article.value.fields.coverImage
+        ? `https:${article.value.fields.coverImage.fields.file.url}`
+        : 'https://www.odice-immigration.com/flags.jpg'
     }
   ]
 })
