@@ -53,9 +53,7 @@ useHead({
     { property: 'og:url', content: `https://www.odice-immigration.com/blog/${article.value.fields.slug}` },
     {
       property: 'og:image',
-      content: article.value.fields.coverImage
-        ? `https:${article.value.fields.coverImage.fields.file.url}`
-        : 'https://www.odice-immigration.com/flags.jpg'
+      content: 'https://www.odice-immigration.com/flags.jpg'
     },
 
     // Twitter Cards
