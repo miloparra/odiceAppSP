@@ -1,6 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faEye, faDownload, faAngleDown, faArrowDown, faGraduationCap, faEarthEurope, faScaleBalanced, faDumbbell, faRoad, faPencil } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faDownload, faAngleDown, faArrowDown, faGraduationCap, faEarthEurope, faScaleBalanced, faDumbbell, faRoad, faPencil, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
@@ -14,7 +14,9 @@ library.add(
     faScaleBalanced,
     faDumbbell,
     faRoad,
-    faPencil
+    faPencil,
+    faMinus,
+    faPlus
 )
 
 export default defineNuxtPlugin((nuxtApp) => {

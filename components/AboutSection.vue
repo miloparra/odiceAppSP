@@ -74,6 +74,8 @@ const serviceLabel = computed(() =>
 const lernMoreLabel = computed(() =>
   lang.value === 'fr' ? 'En savoir plus' : 'Learn more'
 )
+
+const isAboutExpanded = ref(false)
 </script>
 
 <template>
@@ -150,25 +152,55 @@ const lernMoreLabel = computed(() =>
       <div class="flex justify-center mt-[-65px]">
 
         <!-- PC AND TABLET DISPLAY - BASIC VERSION -->
-         <div class="hidden lg:block w-6/7 mt-20 mb-20">
+         <div class="w-5/7 lg:w-6/7 mt-5 mb-15 lg:my-20">
 
-          <div class="flex items-center gap-10">
+          <div class="lg:flex items-center gap-10">
             <!-- Colonne photo -->
-            <div class="flex justify-center py-10 shrink-0 w-1/3">
+            <div class="flex justify-center py-10 shrink-0 w-full lg:w-1/3">
               <img
-                class="w-70 h-70 xl:w-80 xl:h-80 object-cover rounded-full"
+                class="w-40 h-40 xl:w-80 xl:h-80 object-cover rounded-full"
                 src="../public/michel.jpeg"
               />
             </div>
             <!-- Colonne présentation -->
             <div class="flex-1 min-w-0">
-              <p
-                class="prose text-justify whitespace-pre-line"
-                v-html="about?.presentationHtml"
-              ></p>
+
+              <div class="relative">
+
+                <!-- Texte -->
+                <div
+                  class="prose lg:text-justify whitespace-pre-line transition-all duration-500"
+                  :class="{
+                    'max-h-[130px] overflow-hidden lg:max-h-none': !isAboutExpanded
+                  }"
+                  v-html="about?.presentationHtml"
+                ></div>
+
+                <!-- Dégradé mobile -->
+                <div
+                  v-if="!isAboutExpanded"
+                  class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent lg:hidden"
+                ></div>
+
+              </div>
+
+              <!-- Bouton mobile -->
+              <button
+                @click="isAboutExpanded = !isAboutExpanded"
+                class="lg:hidden flex items-center justify-center gap-2 mx-auto mt-3 mb-10 text-[#7d7d7d] font-semibold hover:opacity-75 transition"
+              >
+                <span>
+                  {{ isAboutExpanded ? 'Réduire' : 'Lire la suite' }}
+                </span>
+
+                <font-awesome-icon
+                  :icon="isAboutExpanded ? 'fa-solid fa-minus' : 'fa-solid fa-plus'"
+                />
+              </button>
+
             </div>
           </div>
-          <NuxtLink to="#services" class="flex justify-center mt-15">
+          <NuxtLink to="#services" class="flex justify-center mt-5 lg:mt-15">
             <button class="
                 rounded-full
                 px-10
@@ -189,50 +221,6 @@ const lernMoreLabel = computed(() =>
                 {{ lernMoreLabel }}
             </button>
           </NuxtLink>
-        </div>
-        
-        <!-- SMARTPHONE DISPLA -->
-        <div class="
-            lg:hidden
-            relative
-            w-5/6
-            my-20
-            bg-[#F4F3FF]
-            p-7 lg:p-15
-            lg:text-lg
-            shadow-lg">
-          <p class="guillemets absolute top-[-18px] lg:top-[-25px] left-[2px] text-8xl lg:text-9xl text-zinc-600">"</p>
-          <img class="
-            float-left
-            w-70
-            h-70
-            object-cover
-            p-7 pb-11 lg:pr-7 lg:pt-0 lg:pb-7 lg:pl-0
-            rounded-full" src="../public/michel.jpeg" />
-          <p class="prose md:text-justify whitespace-pre-line" v-html="about?.presentationHtml"></p>
-          <NuxtLink to="#services" class="flex justify-center mt-10">
-            <button class="
-                rounded-full
-                px-10
-                py-3
-                text-sm
-                lg:text-lg
-                font-semibold
-                text-[#8FDA59]
-                border-2
-                border-[#8FDA59]
-                lg:hover:font-medium
-                hover:text-black
-                hover:bg-[#8FDA59]
-                cursor-pointer
-                hover:scale-103
-                hover:shadow-2xl
-                transition-transform-colors duration-300 ease-in-out">
-                {{ lernMoreLabel }}
-            </button>
-          </NuxtLink>
-          <p class="guillemets absolute right-[5px] bottom-[-75px] lg:bottom-[-100px] text-8xl lg:text-9xl text-zinc-600">"
-          </p>
         </div>
       </div>
     </section>
