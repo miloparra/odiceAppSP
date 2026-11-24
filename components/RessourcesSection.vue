@@ -95,7 +95,7 @@ watch(lang, (newLang) => {
     <!-- Ressources -->
     <div
       class="
-        flex gap-4 overflow-x-auto snap-x snap-mandatory
+        flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory
         px-[12%] pb-6
         md:grid md:grid-cols-2 md:overflow-visible md:px-5
         lg:grid-cols-3
