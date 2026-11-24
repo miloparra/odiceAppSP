@@ -1,5 +1,28 @@
 <script setup>
 const { $contentful } = useNuxtApp()
+
+useHead({
+  title: 'ODicé - Blog | Actualités et conseils en immigration',
+
+  meta: [
+    // Description globale
+    {
+      name: 'description',
+      content: 'Retrouvez les articles, conseils pratiques et actualités d’ODicé sur l’immigration, le droit des étrangers et la mobilité internationale en France.'
+    },
+
+    // Open Graph
+    { property: 'og:title', content: 'ODicé - Blog | Actualités et conseils en immigration' },
+    { property: 'og:description', content: 'Retrouvez les articles, conseils pratiques et actualités d’ODicé sur l’immigration, le droit des étrangers et la mobilité internationale en France.' },
+    { property: 'og:url', content: 'https://www.odice-immigration.com/#blog' },
+
+    // Twitter Cards
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'ODicé - Blog | Actualités et conseils en immigration' },
+    { name: 'twitter:description', content: 'Retrouvez les articles, conseils pratiques et actualités d’ODicé sur l’immigration, le droit des étrangers et la mobilité internationale en France.' },
+  ]
+})
+
 const lang = useLang()
 
 const blogIntroduction = ref(null)
