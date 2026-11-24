@@ -81,7 +81,7 @@ const lernMoreLabel = computed(() =>
 
     <!-- HOME SECTION -->
     <section id="home" class="scroll-mt-[65px]">
-      <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-70 object-cover"
+      <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-60 object-cover"
       src="public/flags.jpg" alt="">
       <div class="reactive w-full h-screen top-[-65px]">
         <div class="h-screen absolute flex flex-col justify-between top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -105,7 +105,7 @@ const lernMoreLabel = computed(() =>
                     lg:text-lg
                     font-semibold
                     text-white
-                    border-1
+                    border
                     hover:bg-[oklch(45%_.24_277.023)]
                     hover:border-[oklch(45%_.24_277.023)]
                     cursor-pointer
@@ -124,7 +124,7 @@ const lernMoreLabel = computed(() =>
                     lg:text-lg
                     font-semibold
                     text-white
-                    border-1
+                    border
                     lg:hover:font-medium
                     hover:text-black
                     hover:bg-[#8FDA59]
@@ -149,53 +149,25 @@ const lernMoreLabel = computed(() =>
     <section id="about" class="scroll-mt-[65px]">
       <div class="flex justify-center mt-[-65px]">
 
-        <!-- PC AND TABLET DISPLAY -->
-        <div class="hidden md:block w-4/5 mt-20 mb-25">
+        <!-- PC AND TABLET DISPLAY - BASIC VERSION -->
+         <div class="hidden lg:block w-6/7 mt-20 mb-20">
 
-          <div class="chat chat-start">
-            <div class="chat-image avatar">
-              <div class="w-15 rounded-full">
-                <img
-                  alt="Tailwind CSS chat bubble component"
-                  src="../public/michel.jpeg"
-                />
-              </div>
+          <div class="flex items-center gap-10">
+            <!-- Colonne photo -->
+            <div class="flex justify-center py-10 shrink-0 w-1/3">
+              <img
+                class="w-70 h-70 xl:w-80 xl:h-80 object-cover rounded-full"
+                src="../public/michel.jpeg"
+              />
             </div>
-            <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationA }}</div>
-          </div>
-
-          <div class="chat chat-end my-3">
-            <div class="chat-bubble lg:text-lg px-10 py-5 bg-[#f5f5f5] rounded-3xl">Qu'est ce que vous proposez pour les entreprises ?</div>
-          </div>
-
-          <div class="chat chat-start">
-            <div class="chat-image avatar">
-              <div class="w-15 rounded-full">
-                <img
-                  alt="Tailwind CSS chat bubble component"
-                  src="../public/michel.jpeg"
-                />
-              </div>
+            <!-- Colonne présentation -->
+            <div class="flex-1 min-w-0">
+              <p
+                class="prose text-justify whitespace-pre-line"
+                v-html="about?.presentationHtml"
+              ></p>
             </div>
-            <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationB }}</div>
           </div>
-        
-          <div class="chat chat-end my-3">
-            <div class="chat-bubble lg:text-lg px-10 py-5 bg-[#f5f5f5] rounded-3xl">Et pour les avocats ?</div>
-          </div>
-
-          <div class="chat chat-start">
-            <div class="chat-image avatar">
-              <div class="w-15 rounded-full">
-                <img
-                  alt="Tailwind CSS chat bubble component"
-                  src="../public/michel.jpeg"
-                />
-              </div>
-            </div>
-            <div class="chat-bubble lg:text-lg px-10 py-7 bg-[#F4F3FF] rounded-3xl">{{ about?.presentationC }}</div>
-          </div>
-
           <NuxtLink to="#services" class="flex justify-center mt-15">
             <button class="
                 rounded-full
@@ -217,12 +189,11 @@ const lernMoreLabel = computed(() =>
                 {{ lernMoreLabel }}
             </button>
           </NuxtLink>
-        
         </div>
         
         <!-- SMARTPHONE DISPLA -->
         <div class="
-            md:hidden
+            lg:hidden
             relative
             w-5/6
             my-20
