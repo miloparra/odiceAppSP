@@ -62,9 +62,7 @@ useHead({
     { name: 'twitter:description', content: article.value.fields.excerpt || '' },
     {
       name: 'twitter:image',
-      content: article.value.fields.coverImage
-        ? `https:${article.value.fields.coverImage.fields.file.url}`
-        : 'https://www.odice-immigration.com/flags.jpg'
+      content: 'https://www.odice-immigration.com/flags.jpg'
     }
   ]
 })
