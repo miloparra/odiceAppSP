@@ -71,12 +71,25 @@ watch(lang, (newLang) => {
     <div v-if="error" class="text-red-500">
       Impossible de charger les articles.
     </div>
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 px-5">
-      <ArticleCard
-          v-for="article in articles"
-          :key="article.sys.id"
-          :article="article"
-        />
+    <!-- Articles -->
+    <div
+      class="
+        flex gap-4 overflow-x-auto snap-x snap-mandatory
+        px-[12%] pb-6
+        md:grid md:grid-cols-2 md:overflow-visible md:px-5
+        lg:grid-cols-3
+      "
+    >
+      <div
+        v-for="article in articles"
+        :key="article.sys.id"
+        class="
+          flex-none w-[76vw] snap-center
+          md:w-auto
+        "
+      >
+        <ArticleCard :article="article" />
+      </div>
     </div>
   </section>
 </template>
