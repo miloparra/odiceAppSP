@@ -122,7 +122,7 @@ const toggle = (id) => {
          :key="service.sys.id"
          class="md:px-10 lg:px-20"
     >
-      <div class="collapse bg-white rounded-[40px] mb-4 shadow-xl hover:scale-102 transition-transform duration-400">
+      <div class="collapse bg-white rounded-[25px] md:rounded-[40px] mb-4 shadow-xl hover:scale-102 transition-transform duration-400">
         <div class="collapse ml-4 lg:pl-2 lg:ml-2" :class="{ 'collapse-open': openId === service.sys.id }">
           <div class="collapse-title flex hover:text-[#5452e5]" @click="toggle(service.sys.id)">
             <div class="hidden md:flex items-center mr-10">
@@ -146,7 +146,7 @@ const toggle = (id) => {
             </div>
           </div>
           <div class="collapse-content flex justify-center items-center">
-            <div class="flex items-center md:w-4/5 my-3 md:my-6 md:mr-24">
+            <div class="flex items-center md:w-4/5 my-3 md:my-6 mr-5 md:mr-24">
               <img class="hidden md:block h-38 object-cover mr-10 rounded-full"
               :src="`https:${service.fields.pictogram.fields.file.url}`"
               :alt="service.fields.pictogram.fields.title || 'Service image'" />
