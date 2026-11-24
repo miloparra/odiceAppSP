@@ -74,7 +74,7 @@ watch(lang, (newLang) => {
 </script>
 
 <template>
-  <section id="ressources" class="bg-[#5452e5] scroll-mt-16 px-5 xl:px-60 py-15 lg:py-20">
+  <section id="ressources" class="bg-[#5452e5] scroll-mt-16 px-5 xl:px-60 py-9 lg:py-14">
     <div class="px-10 lg:px-5 pb-10 lg:pb-15 space-y-2">
         <p class="ml-1 mb-2 text-sm font-medium uppercase tracking-widest text-[#dddddd]">
             {{ ressourcesIntroduction?.tag }}
@@ -92,12 +92,36 @@ watch(lang, (newLang) => {
     <div v-if="error" class="text-red-500">
       Impossible de charger les ressources.
     </div>
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 px-5">
-      <RessourceCard
-          v-for="ressource in ressources"
-          :key="ressource.sys.id"
-          :ressource="ressource"
-        />
+    <!-- Ressources -->
+    <div
+      class="
+        flex gap-4 overflow-x-auto snap-x snap-mandatory
+        px-[12%] pb-6
+        md:grid md:grid-cols-2 md:overflow-visible md:px-5
+        lg:grid-cols-3
+      "
+    >
+      <div
+        v-for="ressource in ressources"
+        :key="ressource.sys.id"
+        class="
+          flex-none w-[76vw] snap-center
+          md:w-auto
+        "
+      >
+        <RessourceCard :ressource="ressource" />
+      </div>
     </div>
   </section>
 </template>
+
+<style>
+/* Masquer la scrollbar du carousel */
+.overflow-x-auto {
+  scrollbar-width: none;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+</style>
