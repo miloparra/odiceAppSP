@@ -123,30 +123,31 @@ const toggle = (id) => {
          class="md:px-10 lg:px-20"
     >
       <div class="collapse bg-white rounded-[25px] md:rounded-[40px] mb-4 shadow-xl hover:scale-102 transition-transform duration-400">
-        <div class="collapse ml-4 lg:pl-2 lg:ml-2" :class="{ 'collapse-open': openId === service.sys.id }">
-          <div class="collapse-title flex hover:text-[#5452e5]" @click="toggle(service.sys.id)">
-            <div class="hidden md:flex items-center mr-10">
-              <font-awesome-icon
-                  :icon="service.fields.icon"
-                  class="text-xl"
-              />
-            </div>
-            <div class="flex justify-between items-center w-full">
-              <div>
-                <div class="serviceTitle text-sm md:text-base md:font-semibold">{{ service.fields.title }}</div>
-                <div class="hidden md:block text-sm lg:text-base">{{ service.fields.shortDescription }}</div>
+        <div class="collapse" :class="{ 'collapse-open': openId === service.sys.id }">
+          <div class="collapse-title flex items-center gap-4 md:gap-7 hover:text-[#5452e5]" @click="toggle(service.sys.id)">
+            <!-- Icône -->
+            <font-awesome-icon
+              :icon="service.fields.icon"
+              class="shrink-0 text-sm md:text-xl ml-2 md:ml-6"
+            />
+            <!-- Texte -->
+            <div class="flex-1 min-w-0">
+              <div class="serviceTitle text-sm md:text-base md:font-semibold">
+                {{ service.fields.title }}
               </div>
-              <div class="flex items-center pl-4">
-                <font-awesome-icon
-                    icon="fa-solid fa-angle-down"
-                    class="text-base transition-transform duration-500"
-                    :class="{ 'rotate-180': openId === service.sys.id }"
-                />
+              <div class="hidden md:block text-sm lg:text-base">
+                {{ service.fields.shortDescription }}
               </div>
             </div>
+            <!-- Flèche -->
+            <font-awesome-icon
+              icon="fa-solid fa-angle-down"
+              class="shrink-0 text-base transition-transform duration-500 -mr-6 md:-mr-2"
+              :class="{ 'rotate-180': openId === service.sys.id }"
+            />
           </div>
           <div class="collapse-content flex justify-center items-center">
-            <div class="flex items-center md:w-4/5 my-3 md:my-6 mr-5 md:mr-24">
+            <div class="flex items-center px-3 md:px-10 pt-1 pb-3 md:pb-6">
               <img class="hidden md:block h-38 object-cover mr-10 rounded-full"
               :src="`https:${service.fields.pictogram.fields.file.url}`"
               :alt="service.fields.pictogram.fields.title || 'Service image'" />
