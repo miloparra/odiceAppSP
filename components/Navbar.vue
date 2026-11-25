@@ -92,7 +92,7 @@ watch(sidebarOpen, (isOpen) => {
 </script>
 
 <template>
-  <div class="navbar sticky top-0 z-50 transition-colors duration-1000" :class="navbarClasses">
+  <div class="navbar fixed top-0 left-0 w-full z-50 transition-colors duration-1000" :class="navbarClasses">
     <div class="navbar-start">
       <div class="lg:hidden flex items-center justify-center ml-3">
         <button @click="toggleSidebar" :class="textColorClass">
