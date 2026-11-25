@@ -82,10 +82,10 @@ const isAboutExpanded = ref(false)
   <div class="bg-white">
 
     <!-- HOME SECTION -->
-    <section id="home" class="scroll-mt-[65px]">
-      <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-60 object-cover"
+    <section id="home" class="scroll-mt-16">
+      <img style="height: calc(100vh + 65px)" class="absolute w-full -top-16 filter brightness-60 object-cover"
       src="public/flags.jpg" alt="">
-      <div class="reactive w-full h-screen top-[-65px]">
+      <div class="reactive w-full h-screen -top-16">
         <div class="h-screen absolute flex flex-col justify-between top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div class="h-20"></div>
           <div class="space-y-10">
@@ -148,8 +148,8 @@ const isAboutExpanded = ref(false)
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="scroll-mt-[65px]">
-      <div class="flex justify-center mt-[-65px]">
+    <section id="about" class="scroll-mt-16">
+      <div class="flex justify-center">
 
         <!-- PC AND TABLET DISPLAY - BASIC VERSION -->
          <div class="w-5/7 lg:w-6/7 mt-5 mb-15 lg:my-20">
