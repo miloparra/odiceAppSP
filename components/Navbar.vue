@@ -145,11 +145,11 @@ watch(sidebarOpen, (isOpen) => {
         </svg>
       </button>
       <ul class="space-y-4 text-lg">
-        <li><NuxtLink @click="toggleSidebar" to="#about">{{ aboutTab }}</NuxtLink></li>
-        <li><NuxtLink @click="toggleSidebar" to="#services">Services</NuxtLink></li>
-        <li><NuxtLink @click="toggleSidebar" to="#blog">Blog</NuxtLink></li>
-        <li><NuxtLink @click="toggleSidebar" to="#ressources">{{ resourcesTab }}</NuxtLink></li>
-        <li><NuxtLink @click="toggleSidebar" to="#contact">Contact</NuxtLink></li>
+        <li><NuxtLink @click="toggleSidebar" to="/#about">{{ aboutTab }}</NuxtLink></li>
+        <li><NuxtLink @click="toggleSidebar" to="/#services">Services</NuxtLink></li>
+        <li><NuxtLink @click="toggleSidebar" to="/#blog">Blog</NuxtLink></li>
+        <li><NuxtLink @click="toggleSidebar" to="/#ressources">{{ resourcesTab }}</NuxtLink></li>
+        <li><NuxtLink @click="toggleSidebar" to="/#contact">Contact</NuxtLink></li>
       </ul>
     </div>
   </transition>
