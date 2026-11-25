@@ -1,21 +1,51 @@
 <script setup>
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-const route = useRoute()
-const { $contentful } = useNuxtApp()
 
-const { data: article, error } = await useAsyncData(
-  `article-${route.params.slug}`,
-  async () => {
+const route = useRoute()
+const router = useRouter()
+const { $contentful } = useNuxtApp()
+const lang = useLang()
+
+const article = ref(null)
+const error = ref(null)
+
+// Chargement de l'article selon le slug et la langue
+const loadArticle = async (slug, locale) => {
+  try {
     const response = await $contentful.getEntries({
       content_type: 'article',
-      'fields.slug': route.params.slug,
-      limit: 1
+      'fields.slug': slug,
+      locale,
+      limit: 1,
+      include: 1
     })
 
     return response.items[0] || null
+
+  } catch (err) {
+    console.error('Erreur chargement article:', err)
+    throw err
   }
+}
+
+// Chargement initial
+const { data, error: fetchError } = await useAsyncData(
+  `article-${route.params.slug}-${lang.value}`,
+  () => loadArticle(route.params.slug, lang.value)
 )
 
+article.value = data.value
+error.value = fetchError.value
+
+// Article introuvable
+if (!article.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Article introuvable'
+  })
+}
+
+// Contenu Rich Text
 const articleHtml = computed(() => {
   const content = article.value?.fields?.content
 
@@ -24,53 +54,73 @@ const articleHtml = computed(() => {
   return documentToHtmlString(content)
 })
 
-if (!article.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Article introuvable'
-  })
-}
+// Changement de langue
+watch(lang, async (newLang) => {
+  if (!article.value) return
 
+  try {
+    // On récupère la traduction du même article
+    const translatedArticle = await $contentful.getEntry(
+      article.value.sys.id,
+      { locale: newLang }
+    )
 
-useHead({
-  title: `${article.value.fields.title} | ODicé`,
+    article.value = translatedArticle
 
-  link: [
-    {
-      rel: 'canonical',
-      href: `https://www.odice-immigration.com/blog/${article.value.fields.slug}`
+    // On met à jour le slug dans l'URL
+    const newSlug = translatedArticle.fields.slug
+
+    if (newSlug !== route.params.slug) {
+      await router.replace(`/blog/${newSlug}`)
     }
-  ],
 
-  meta: [
-    // Description SEO
-    { name: 'description', content: article.value.fields.excerpt || '' },
-
-    // Open Graph
-    { property: 'og:type', content: 'article' },
-    { property: 'og:title', content: `${article.value.fields.title} | ODicé` },
-    { property: 'og:description', content: article.value.fields.excerpt || '' },
-    { property: 'og:url', content: `https://www.odice-immigration.com/blog/${article.value.fields.slug}` },
-    {
-      property: 'og:image',
-      content:  article.value.fields.coverImage
-        ? `https:${article.value.fields.coverImage.fields.file.url}`
-        : 'https://www.odice-immigration.com/flags.jpg'
-    },
-
-    // Twitter Cards
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: `${article.value.fields.title} | ODicé` },
-    { name: 'twitter:description', content: article.value.fields.excerpt || '' },
-    {
-      name: 'twitter:image',
-      content:  article.value.fields.coverImage
-        ? `https:${article.value.fields.coverImage.fields.file.url}`
-        : 'https://www.odice-immigration.com/flags.jpg'
-    }
-  ]
+  } catch (err) {
+    console.error('Erreur changement de langue:', err)
+  }
 })
 
+// SEO dynamique
+useHead(() => {
+  const fields = article.value?.fields
+
+  if (!fields) return {}
+
+  const title = `${fields.title} | ODicé`
+  const description = fields.excerpt || ''
+  const image = fields.coverImage?.fields?.file?.url
+    ? `https:${fields.coverImage.fields.file.url}`
+    : 'https://www.odice-immigration.com/flags.jpg'
+
+  const url = `https://www.odice-immigration.com/blog/${fields.slug}`
+
+  return {
+    title,
+
+    link: [
+      {
+        rel: 'canonical',
+        href: url
+      }
+    ],
+
+    meta: [
+      { name: 'description', content: description },
+
+      // Open Graph
+      { property: 'og:type', content: 'article' },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:url', content: url },
+      { property: 'og:image', content: image },
+
+      // Twitter
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: image }
+    ]
+  }
+})
 </script>
 
 <template>
