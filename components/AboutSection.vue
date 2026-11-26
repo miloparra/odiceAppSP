@@ -88,8 +88,24 @@ const isAboutExpanded = ref(false)
       <div class="reactive w-full h-screen -top-16">
         <div class="h-screen absolute flex flex-col justify-between top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div class="h-20"></div>
-          <div class="space-y-10">
+          <div>
+            <div class="relative flex justify-center items-center h-20 w-20 lg:h-30 lg:w-30 mx-auto">
+              <!-- Enveloppe -->
+              <img
+                class="absolute inset-0 h-full w-full object-contain z-20"
+                src="/logo/DecompoEnvelop.png"
+                alt=""
+              >
+
+              <!-- Terre qui tourne -->
+              <img
+                class="absolute inset-0 h-full w-full object-contain animate-[spin_20s_linear_infinite] z-10"
+                src="/logo/DecompoTerre.png"
+                alt=""
+              >
+            </div>
             <h1 class="
+                mb-10
                 text-center
                 welcomeTitle
                 text-white
@@ -223,6 +239,10 @@ const isAboutExpanded = ref(false)
           </NuxtLink>
         </div>
       </div>
+      <div class="mx-5 scale-90 md:scale-100 md:mx-20">
+        <GoogleReviews />
+      </div>
+      <div class="h-5 md:h-20"></div>
     </section>
   </div>
 </template>
