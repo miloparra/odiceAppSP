@@ -124,7 +124,7 @@ useHead(() => {
 </script>
 
 <template>
-  <main v-if="article" class="mt-16 mb-5">
+  <main v-if="article" class="mt-10 md:mt-16 mb-5">
 
     <!-- Head -->
     <section class="px-5 pb-12 pt-12">
